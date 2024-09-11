@@ -1,0 +1,115 @@
+Processing sifive-hifive1-revb (platform: sifive; framework: freedom-e-sdk; board: hifive1-revb; monitor_speed: 115200)
+--------------------------------------------------------------------------------
+CONFIGURATION: https://docs.platformio.org/page/boards/sifive/hifive1-revb.html
+PLATFORM: SiFive (5.2.0) > HiFive1 Rev B
+HARDWARE: FE310 320MHz, 16KB RAM, 16MB Flash
+DEBUG: Current (jlink) On-board (jlink, renode)
+PACKAGES:
+ - framework-freedom-e-sdk @ 2.20050003.200818 (2005.0.3)
+ - tool-jlink @ 1.78811.0 (7.88.11)
+ - tool-openocd-riscv @ 2.1000.20190927 (10.0)
+ - toolchain-riscv @ 1.80300.190927 (8.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 0 compatible libraries
+Scanning dependencies...
+No dependencies
+Building in release mode
+MethodWrapper(["checkprogsize"], [".pio/build/sifive-hifive1-revb/firmware.elf"])
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [====      ]  36.9% (used 6048 bytes from 16384 bytes)
+Flash: [          ]   0.1% (used 18870 bytes from 16777216 bytes)
+text       data     bss     dec     hex filename
+  16058    2812    3236   22106    565a .pio/build/sifive-hifive1-revb/firmware.elf
+<lambda>(["upload"], [".pio/build/sifive-hifive1-revb/firmware.hex"])
+AVAILABLE: jlink
+CURRENT: upload_protocol = jlink
+JLinkExe -device FE310 -speed 4000 -if JTAG -jtagconf -1,-1 -autoconnect 1 -NoGui 1 -CommanderScript "/home/pacm/workspace/platform-sifive/examples/freedom-e-sdk_hello/.pio/build/sifive-hifive1-revb/upload.jlink"
+SEGGER J-Link Commander V7.88k (Compiled Jul  5 2023 15:00:37)
+DLL version V7.96j, compiled May 29 2024 15:42:37
+
+
+J-Link Command File read successfully.
+Processing script file...
+J-Link>h
+J-Link connection not established yet but required for command.
+Connecting to J-Link via USB...O.K.
+Firmware: J-Link OB-K22-SiFive compiled Nov  7 2022 16:21:52
+Hardware version: V1.00
+J-Link uptime (since boot): 0d 00h 03m 30s
+S/N: 979016194
+USB speed mode: Full speed (12 MBit/s)
+VTref=3.300V
+Target connection not established yet but required for command.
+Device "FE310" selected.
+
+
+Connecting to target via JTAG
+ConfigTargetSettings() start
+ConfigTargetSettings() end - Took 11us
+TotalIRLen = 5, IRPrint = 0x01
+JTAG chain detection found 1 devices:
+ #0 Id: 0x20000913, IRLen: 05, Unknown device
+Assuming RISC-V TAP with DTM setup
+Debug architecture:
+  RISC-V debug: 0.13
+  AddrBits: 7
+  DataBits: 32
+  IdleClks: 5
+Memory access:
+  Via system bus: No
+  Via ProgBuf: Yes (16 ProgBuf entries)
+  Via abstract command (AAM): May be tried as last resort
+DataBuf: 1 entries
+  autoexec[0] implemented: Yes
+Detected: RV32 core
+RISC-V: The connected J-Link (S/N 979016194) uses an old firmware module V0 with known problems / limitations.
+Temp. halting CPU for for feature detection...
+HW instruction/data BPs: 8
+Support set/clr BPs while running: No
+HW data BPs trigger before execution of inst
+CSR access via abs. commands: No
+Compressed instruction support: Yes
+Feature detection done. Restarting core...
+BG memory access support: No
+Memory zones:
+  Zone: "Default" Description: Default access mode
+RISC-V identified.
+pc = 20013606 sp = 80001190 ra = 20013806
+gp = 800012B0 tp = 80000B18 fp = 00000000
+t0 = 00000000 t1 = 2001332E t2 = 800030D0
+t3 = 00000000 t4 = 00000000 t5 = 00000000 t6 = 00000000
+a0 = 00000000 a1 = 00000000 a2 = 00000013 a3 = 00000000
+a4 = 00000000 a5 = 00000000 a6 = 00000000 a7 = 00000000
+s1 = 02000080 s2 = 02000080 s3 = 00000000 s4 = 00000000
+s5 = 00000000 s6 = 00000000 s7 = 00000000 s8 = 00000000
+s9 = 00000000 s10 = 00000000 s11 = 00000000
+J-Link>loadfile .pio/build/sifive-hifive1-revb/firmware.hex
+'loadfile': Performing implicit reset & halt of MCU.
+RISC-V: Performing reset via <ndmreset>
+Downloading file [.pio/build/sifive-hifive1-revb/firmware.hex]...
+Comparing flash   [000%]000%]050%]100%] Done.
+Erasing flash     [000%]000%]100%] Done.
+Programming flash [000%]000%]005%]005%]010%]010%]015%]015%]025%]025%]030%]100%] Done.
+J-Link: Flash download: Bank 0 @ 0x20000000: 1 range affected (65536 bytes)
+J-Link: Flash download: Total: 0.872s (Prepare: 0.006s, Compare: 0.298s, Erase: 0.118s, Program & Verify: 0.345s, Restore: 0.102s)
+J-Link: Flash download: Program & Verify speed: 185 KB/s
+O.K.
+J-Link>r
+Reset delay: 0 ms
+Reset type Normal: Resets core & peripherals using <ndmreset> bit in <dmcontrol> debug register.
+RISC-V: Performing reset via <ndmreset>
+J-Link>q
+
+Script processing completed.
+
+========================= [SUCCESS] Took 4.98 seconds =========================
+
+Environment              Status    Duration
+-----------------------  --------  ------------
+sifive-hifive1-revb      SUCCESS   00:00:04.981
+sifive-hifive1           IGNORED
+sifive-hifive-unleashed  IGNORED
+e310-arty                IGNORED
+sparkfun_thing_plus_v    IGNORED
+========================= 1 succeeded in 00:00:04.981 =========================

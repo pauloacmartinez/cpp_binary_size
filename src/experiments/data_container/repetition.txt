@@ -1,0 +1,19 @@
+    add_data_point<bool>(dps, add_id++, "boolean", random_boolean());
+    add_data_point<float>(dps, add_id++, "float", random_number<float>());
+    add_data_point<uint32_t>(dps, add_id++, "u32", random_number<uint32_t>());
+    add_data_point<int32_t>(dps, add_id++, "i32", random_number<int32_t>());
+    add_data_point<uint16_t>(dps, add_id++, "u16", random_number<uint16_t>());
+    add_data_point<int16_t>(dps, add_id++, "i16", random_number<int16_t>());
+    add_data_point<uint8_t>(dps, add_id++, "u8", random_number<uint8_t>());
+    add_data_point<int8_t>(dps, add_id++, "i8", -8);
+    add_data_point<std::string>(dps, add_id++, "str", random_string(32));
+
+    d_print.out(get_value(dps, get_id++));
+    d_print.out(get_value(dps, get_id++));
+    d_print.out(get_value(dps, get_id++));
+    d_print.out(get_value(dps, get_id++));
+    d_print.out(get_value(dps, get_id++));
+    d_print.out(get_value(dps, get_id++));
+    d_print.out(get_value(dps, get_id++));
+    d_print.out(get_value(dps, get_id++));
+    d_print.out(get_value(dps, get_id++));

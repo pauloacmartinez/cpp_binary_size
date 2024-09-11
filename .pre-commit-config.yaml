@@ -1,0 +1,50 @@
+---
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-json
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-xml
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: forbid-new-submodules
+      - id: trailing-whitespace
+        exclude: ^(.*patch)
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.5
+    hooks:
+      - id: forbid-crlf
+        files: \.md$
+      - id: remove-crlf
+        files: \.md$
+      - id: forbid-tabs
+      - id: remove-tabs
+
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v18.1.8
+    hooks:
+    - id: clang-format
+      types_or: [c, c++]
+      exclude: platforms/
+
+  # - repo: https://github.com/cheshirekow/cmake-format-precommit
+  #   rev: v0.6.13
+  #   hooks:
+  #   - id: cmake-format
+  #   - id: cmake-lint
+
+  # - repo: https://github.com/igorshubovych/markdownlint-cli
+  #   rev: v0.41.0
+  #   hooks:
+  #     - id: markdownlint
+  #       args: [--fix, --ignore=LICENSE.md]

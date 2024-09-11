@@ -1,0 +1,175 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "stm32f4-base",
+            "hidden": true,
+            "inherits": "base",
+            "toolchainFile": "${sourceDir}/cmake/toolchain/stm32f4.cmake",
+            "cacheVariables": {
+                "platform": "stm32f4"
+            }
+        },
+        {
+            "name": "stm32f4-Debug",
+            "inherits": "stm32f4-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "stm32f4-RelWithDebInfo",
+            "inherits": "stm32f4-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "stm32f4-Release",
+            "inherits": "stm32f4-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "stm32f4-MinSizeRel",
+            "inherits": "stm32f4-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        },
+        {
+            "name": "ra4m1-base",
+            "hidden": true,
+            "inherits": "base",
+            "toolchainFile": "${sourceDir}/cmake/toolchain/ra4m1.cmake",
+            "cacheVariables": {
+                "platform": "ra4m1"
+            }
+        },
+        {
+            "name": "ra4m1-Debug",
+            "inherits": "ra4m1-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "ra4m1-RelWithDebInfo",
+            "inherits": "ra4m1-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "ra4m1-Release",
+            "inherits": "ra4m1-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "ra4m1-MinSizeRel",
+            "inherits": "ra4m1-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        },
+        {
+            "name": "rv32imac-base",
+            "hidden": true,
+            "inherits": "base",
+            "toolchainFile": "${sourceDir}/cmake/toolchain/rv32imac.cmake",
+            "cacheVariables": {
+                "platform": "rv32imac"
+            }
+        },
+        {
+            "name": "rv32imac-Debug",
+            "inherits": "rv32imac-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "rv32imac-RelWithDebInfo",
+            "inherits": "rv32imac-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "rv32imac-Release",
+            "inherits": "rv32imac-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "rv32imac-MinSizeRel",
+            "inherits": "rv32imac-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "stm32f4-Debug",
+            "configurePreset": "stm32f4-Debug"
+        },
+        {
+            "name": "stm32f4-RelWithDebInfo",
+            "configurePreset": "stm32f4-RelWithDebInfo"
+        },
+        {
+            "name": "stm32f4-Release",
+            "configurePreset": "stm32f4-Release"
+        },
+        {
+            "name": "stm32f4-MinSizeRel",
+            "configurePreset": "stm32f4-MinSizeRel"
+        },
+        {
+            "name": "ra4m1-Debug",
+            "configurePreset": "ra4m1-Debug"
+        },
+        {
+            "name": "ra4m1-RelWithDebInfo",
+            "configurePreset": "ra4m1-RelWithDebInfo"
+        },
+        {
+            "name": "ra4m1-Release",
+            "configurePreset": "ra4m1-Release"
+        },
+        {
+            "name": "ra4m1-MinSizeRel",
+            "configurePreset": "ra4m1-MinSizeRel"
+        },
+        {
+            "name": "rv32imac-Debug",
+            "configurePreset": "rv32imac-Debug"
+        },
+        {
+            "name": "rv32imac-RelWithDebInfo",
+            "configurePreset": "rv32imac-RelWithDebInfo"
+        },
+        {
+            "name": "rv32imac-Release",
+            "configurePreset": "rv32imac-Release"
+        },
+        {
+            "name": "rv32imac-MinSizeRel",
+            "configurePreset": "rv32imac-MinSizeRel"
+        }
+    ]
+}

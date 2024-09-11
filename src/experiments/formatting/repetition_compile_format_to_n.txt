@@ -1,0 +1,12 @@
+    randomize_char_array(random_c_arr);
+    format_size = fmt::format_to_n(format_buffer.begin(), format_buffer.size(), "enter random: {}"_cf, std::string_view{random_c_arr.data(), 16}).size;
+    print(format_buffer.data(), format_size);
+
+    format_size = fmt::format_to_n(format_buffer.begin(), format_buffer.size(), "enter random: {}"_cf, random_number<int>()).size;
+    print(format_buffer.data(), format_size);
+
+    format_size = fmt::format_to_n(format_buffer.begin(), format_buffer.size(), "enter random: {}"_cf, random_number<float>()).size;
+    print(format_buffer.data(), format_size);
+
+    format_size = fmt::format_to_n(format_buffer.begin(), format_buffer.size(), "enter random: {}"_cf, random_number<double>()).size;
+    print(format_buffer.data(), format_size);

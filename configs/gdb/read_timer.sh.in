@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Copyright (c) 2024 Paulo Martinez
+# Licensed under the MIT License, see LICENSE file.
+
+set -e
+
+openocd -f ${cpp_binary_size_SOURCE_DIR}/configs/openocd/stm32f4.cfg &
+openocd_pid=$!
+
+${gcc-arm-none-eabi_SOURCE_DIR}/bin/arm-none-eabi-gdb ${CMAKE_CURRENT_BINARY_DIR}/${target}.elf -x ${cpp_binary_size_SOURCE_DIR}/configs/gdb/stm32f4_read_timer.gdb
+
+kill $openocd_pid

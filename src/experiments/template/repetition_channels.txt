@@ -1,0 +1,8 @@
+    ds.out(random_number<float>());     //
+    ds.out(random_number<double>());    //
+    ds.out(random_number<uint32_t>());  //
+    ds.out(random_number<int32_t>());   //
+    ds.out(random_number<uint16_t>());  //
+    ds.out(random_number<int16_t>());   //
+    ds.out(random_number<uint8_t>());   //
+    ds.out(random_number<int8_t>());    //

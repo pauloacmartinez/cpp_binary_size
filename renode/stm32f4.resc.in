@@ -1,0 +1,25 @@
+:name: Experiment STM32F4 Discovery
+:description: Lorem ipsum.
+
+#logFile $ORIGIN/experiment.log True
+
+$bin?=@${CMAKE_CURRENT_BINARY_DIR}/${target}.elf
+
+mach create
+machine LoadPlatformDescription @platforms/boards/stm32f4_discovery-kit.repl
+machine LoadPlatformDescription @renode/add_ccm.repl
+
+showAnalyzer sysbus.usart2
+sysbus.usart2 RecordToAsciinema $ORIGIN/experiment.asciinema
+
+macro reset
+"""
+    sysbus LoadELF $bin
+    sysbus.cpu EnableProfilerCollapsedStack $ORIGIN/experiment.trace
+    #machine StartGdbServer 3333
+    start
+    sleep 10
+    quit
+"""
+
+runMacro $reset

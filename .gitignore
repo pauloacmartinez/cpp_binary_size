@@ -1,0 +1,8 @@
+.cpm/
+build/
+.vscode/
+
+*.asciinema
+*.log
+*.log.*
+*.trace

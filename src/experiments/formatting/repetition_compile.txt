@@ -1,0 +1,7 @@
+    std::puts(fmt::format("enter random: {}"_cf, random_string(16)).c_str());
+
+    std::puts(fmt::format("enter random: {}"_cf, random_number<int>()).c_str());
+
+    std::puts(fmt::format("enter random: {}"_cf, random_number<float>()).c_str());
+
+    std::puts(fmt::format("enter random: {}"_cf, random_number<double>()).c_str());
