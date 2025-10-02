@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Paulo Martinez
+// Copyright (c) 2025 Paulo Martinez
 // Licensed under the MIT License, see LICENSE file.
 
 #include <cstdint>

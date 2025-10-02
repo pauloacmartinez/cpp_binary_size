@@ -1,8 +1,8 @@
 cpmaddpackage(
     NAME stm32cubef4
-    VERSION 1.28.1
+    VERSION 1.28.3
     GITHUB_REPOSITORY STMicroelectronics/STM32CubeF4
-    GIT_TAG v1.28.1
+    GIT_TAG v1.28.3
     DOWNLOAD_ONLY True
     # fix syscalls for lto, cleanup warnings and add RNG
     PATCH_COMMAND git apply ${CMAKE_CURRENT_LIST_DIR}/stm32cubef4.patch

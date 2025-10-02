@@ -10,9 +10,9 @@ set(CMAKE_EXECUTABLE_SUFFIX .elf)
 
 cpmaddpackage(
     NAME gcc-riscv-none-elf
-    VERSION 13.3
-    URL https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v13.3.0-1/xpack-riscv-none-elf-gcc-13.3.0-1-linux-x64.tar.gz
-    URL_HASH SHA256=5386d1a7b261d37a6c34e644fc01ed2562132a9fae3e314083f64ad5e8cceb16
+    VERSION 14.2
+    URL https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v14.2.0-3/xpack-riscv-none-elf-gcc-14.2.0-3-linux-x64.tar.gz
+    URL_HASH SHA256=f574415b63f12b09bdd3475223ab492a465d23810646c90c13a4c3b676c83503
     DOWNLOAD_ONLY True
 )
 
