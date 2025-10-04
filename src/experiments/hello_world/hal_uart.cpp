@@ -11,5 +11,5 @@ void __attribute__((noinline)) experiment() {
     const auto timeout = 1'000;  // ms
     const std::string str = "Hello World!\n";
 
-    HAL_UART_Transmit(&UartHandle, reinterpret_cast<const uint8_t *>(str.c_str()), str.length(), timeout);
+    HAL_UART_Transmit(&UartHandle, reinterpret_cast<const uint8_t*>(str.c_str()), str.length(), timeout);
 }

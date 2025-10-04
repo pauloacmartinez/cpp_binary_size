@@ -21,7 +21,7 @@ class data_sink {
     std::string s;
 
    public:
-    void out(const value_t &v) {
+    void out(const value_t& v) {
         if (std::holds_alternative<std::monostate>(v)) {
         } else if (std::holds_alternative<bool>(v)) {
             b = std::get<bool>(v);
@@ -60,7 +60,7 @@ void __attribute__((noinline)) experiment() {
     };
     data_sink ds{};
 
-    for (const auto &value : values) {
+    for (const auto& value : values) {
         ds.out(value);
     }
 }

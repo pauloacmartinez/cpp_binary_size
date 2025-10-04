@@ -21,26 +21,26 @@ class data_sink {
     std::string s;
 
    public:
-    void out(const value_t &v) {
-        if (const auto *p = std::get_if<std::monostate>(&v)) {
+    void out(const value_t& v) {
+        if (const auto* p = std::get_if<std::monostate>(&v)) {
             (void)p;
-        } else if (const auto *p = std::get_if<bool>(&v)) {
+        } else if (const auto* p = std::get_if<bool>(&v)) {
             b = *p;
-        } else if (const auto *p = std::get_if<float>(&v)) {
+        } else if (const auto* p = std::get_if<float>(&v)) {
             f = *p;
-        } else if (const auto *p = std::get_if<uint32_t>(&v)) {
+        } else if (const auto* p = std::get_if<uint32_t>(&v)) {
             u32 = *p;
-        } else if (const auto *p = std::get_if<int32_t>(&v)) {
+        } else if (const auto* p = std::get_if<int32_t>(&v)) {
             i32 = *p;
-        } else if (const auto *p = std::get_if<uint16_t>(&v)) {
+        } else if (const auto* p = std::get_if<uint16_t>(&v)) {
             u16 = *p;
-        } else if (const auto *p = std::get_if<int16_t>(&v)) {
+        } else if (const auto* p = std::get_if<int16_t>(&v)) {
             i16 = *p;
-        } else if (const auto *p = std::get_if<uint8_t>(&v)) {
+        } else if (const auto* p = std::get_if<uint8_t>(&v)) {
             u8 = *p;
-        } else if (const auto *p = std::get_if<int8_t>(&v)) {
+        } else if (const auto* p = std::get_if<int8_t>(&v)) {
             i8 = *p;
-        } else if (const auto *p = std::get_if<std::string>(&v)) {
+        } else if (const auto* p = std::get_if<std::string>(&v)) {
             s = *p;
         }
     }
@@ -61,7 +61,7 @@ void __attribute__((noinline)) experiment() {
     };
     data_sink ds{};
 
-    for (const auto &value : values) {
+    for (const auto& value : values) {
         ds.out(value);
     }
 }
