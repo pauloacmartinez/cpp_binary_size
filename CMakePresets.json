@@ -48,6 +48,14 @@
             }
         },
         {
+            "name": "stm32f4-MinSizeRel-Custom",
+            "inherits": "stm32f4-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel",
+                "USE_CUSTOM_TOOLCHAIN": "ON"
+            }
+        },
+        {
             "name": "ra4m1-base",
             "hidden": true,
             "inherits": "base",

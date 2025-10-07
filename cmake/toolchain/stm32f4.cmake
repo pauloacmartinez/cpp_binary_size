@@ -6,17 +6,26 @@ set(CMAKE_CXX_COMPILER_FORCED TRUE)
 set(CMAKE_C_COMPILER_ID GNU)
 set(CMAKE_CXX_COMPILER_ID GNU)
 
-cpmaddpackage(
-    NAME gcc-arm-none-eabi
-    VERSION 14.3
-    URL https://developer.arm.com/-/media/Files/downloads/gnu/14.3.rel1/binrel/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz
-    URL_HASH SHA256=8f6903f8ceb084d9227b9ef991490413014d991874a1e34074443c2a72b14dbd
-    DOWNLOAD_ONLY True
-)
+if(USE_CUSTOM_TOOLCHAIN)
+    cpmaddpackage(
+        NAME gcc-arm-none-eabi
+        VERSION 14.3
+        URL https://github.com/pauloacmartinez/cpp_binary_size/releases/download/14.3/arm-none-eabi-tools.tar.xz
+        URL_HASH SHA256=9147592f17b1ba6f2a54788e0686694314dd256f19aa81f2d5e3ec4365ddf674
+        DOWNLOAD_ONLY True
+    )
+else()
+    cpmaddpackage(
+        NAME gcc-arm-none-eabi
+        VERSION 14.3
+        URL https://developer.arm.com/-/media/Files/downloads/gnu/14.3.rel1/binrel/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz
+        URL_HASH SHA256=8f6903f8ceb084d9227b9ef991490413014d991874a1e34074443c2a72b14dbd
+        DOWNLOAD_ONLY True
+    )
+endif()
 
 set(TOOLCHAIN_TRIPLET               arm-none-eabi)
 
-# set(gcc-arm-none-eabi_SOURCE_DIR /home/pacm/workspace/arm_toolchain/build-arm-none-eabi/install)
 set(CMAKE_C_COMPILER                ${gcc-arm-none-eabi_SOURCE_DIR}/bin/${TOOLCHAIN_TRIPLET}-gcc)
 set(CMAKE_ASM_COMPILER              ${gcc-arm-none-eabi_SOURCE_DIR}/bin/${TOOLCHAIN_TRIPLET}-gcc)
 set(CMAKE_CXX_COMPILER              ${gcc-arm-none-eabi_SOURCE_DIR}/bin/${TOOLCHAIN_TRIPLET}-g++)

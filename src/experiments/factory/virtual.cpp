@@ -8,7 +8,7 @@
 #include "random_inputs.h"
 
 struct ro_storage {
-    virtual bool store(std::string const& strr) = 0;
+    virtual bool store(std::string const& str) = 0;
     virtual const char* cstr() = 0;
     virtual ~ro_storage() = default;
 };
