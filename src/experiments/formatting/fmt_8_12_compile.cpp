@@ -4,6 +4,7 @@
 #include "random_inputs.h"
 
 #pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdangling-reference"
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #include "fmt/compile.h"
 #pragma GCC diagnostic pop

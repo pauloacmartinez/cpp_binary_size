@@ -6,20 +6,20 @@ set(CMAKE_CXX_COMPILER_FORCED TRUE)
 set(CMAKE_C_COMPILER_ID GNU)
 set(CMAKE_CXX_COMPILER_ID GNU)
 
-if(USE_CUSTOM_TOOLCHAIN)
+if(USE_ARM_TOOLCHAIN)
     cpmaddpackage(
         NAME gcc-arm-none-eabi
         VERSION 14.3
-        URL https://github.com/pauloacmartinez/cpp_binary_size/releases/download/14.3/arm-none-eabi-tools.tar.xz
-        URL_HASH SHA256=9147592f17b1ba6f2a54788e0686694314dd256f19aa81f2d5e3ec4365ddf674
+        URL https://developer.arm.com/-/media/Files/downloads/gnu/14.3.rel1/binrel/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz
+        URL_HASH SHA256=8f6903f8ceb084d9227b9ef991490413014d991874a1e34074443c2a72b14dbd
         DOWNLOAD_ONLY True
     )
 else()
     cpmaddpackage(
         NAME gcc-arm-none-eabi
         VERSION 14.3
-        URL https://developer.arm.com/-/media/Files/downloads/gnu/14.3.rel1/binrel/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz
-        URL_HASH SHA256=8f6903f8ceb084d9227b9ef991490413014d991874a1e34074443c2a72b14dbd
+        URL https://github.com/pauloacmartinez/cpp_binary_size/releases/download/14.3/arm-none-eabi-tools.tar.xz
+        URL_HASH SHA256=9147592f17b1ba6f2a54788e0686694314dd256f19aa81f2d5e3ec4365ddf674
         DOWNLOAD_ONLY True
     )
 endif()

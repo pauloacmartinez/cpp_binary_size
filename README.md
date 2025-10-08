@@ -26,8 +26,8 @@ for comparing, flashing and emulating the generated firmwares.
 Setup build enviroment
 
 ```bash
-$ cmake --preset stm32f4-MinSizeRel
-$ cd build/stm32f4-MinSizeRel
+$ cmake --preset stm32f4-MinSizeRel-Custom
+$ cd build/stm32f4-MinSizeRel-Custom
 ```
 
 build and emulate firmware
