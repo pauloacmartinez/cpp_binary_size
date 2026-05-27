@@ -18,7 +18,7 @@ macro reset
     sysbus.cpu EnableProfilerCollapsedStack $ORIGIN/experiment.trace
     #machine StartGdbServer 3333
     start
-    sleep 10
+    sleep 5
     quit
 """
 
