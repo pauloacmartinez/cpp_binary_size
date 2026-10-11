@@ -1,4 +1,5 @@
-include(${CMAKE_SOURCE_DIR}/cmake/fmt.cmake)
+include(fmt)
+include(std_module)
 
 function(add_experiment source target)
     add_library(experiment_${target} STATIC ${source}.cpp)
@@ -7,49 +8,33 @@ function(add_experiment source target)
 
     add_executable(${target})
 
+    if(MOLD_LINKER)
+        set_property(
+            TARGET ${target}
+            APPEND
+            PROPERTY LINK_DEPENDS ${CMAKE_SOURCE_DIR}/cmake/mold_link_cmd.cmake)
+    endif()
+
     target_link_options(${target} PRIVATE -Wl,-Map=${target}.map)
 
     add_custom_command(
         TARGET ${target}
         POST_BUILD
         COMMAND echo "${target}.elf to ${target}.bin"
-        COMMAND ${CMAKE_OBJCOPY} -O binary -S
-                ${CMAKE_CURRENT_BINARY_DIR}/${target}.elf
-                ${CMAKE_CURRENT_BINARY_DIR}/${target}.bin
-    )
+        COMMAND ${CMAKE_OBJCOPY} -O binary -S ${CMAKE_CURRENT_BINARY_DIR}/${target}.elf
+                ${CMAKE_CURRENT_BINARY_DIR}/${target}.bin)
 
     experiment_platform_setup(${target})
 
     target_link_libraries(${target} PUBLIC ${platform}_sdk experiment_${target})
 endfunction(add_experiment)
 
-# WIP: to be used with GCC >= 15
 function(add_module_experiment source target)
-    add_library(experiment_${target})
-    target_sources(experiment_${target}
-        PUBLIC
-            FILE_SET CXX_MODULES FILES
-                ${source}.cxx
-    )
+    add_experiment(${CMAKE_CURRENT_FUNCTION_LIST_DIR}/experiment_module ${target} ${ARGN})
 
-    target_link_libraries(experiment_${target} PRIVATE utils ${ARGN})
-
-    add_executable(${target})
-
-    target_link_options(${target} PRIVATE -Wl,-Map=${target}.map)
-
-    add_custom_command(
-        TARGET ${target}
-        POST_BUILD
-        COMMAND echo "${target}.elf to ${target}.bin"
-        COMMAND ${CMAKE_OBJCOPY} -O binary -S
-                ${CMAKE_CURRENT_BINARY_DIR}/${target}.elf
-                ${CMAKE_CURRENT_BINARY_DIR}/${target}.bin
-    )
-
-    experiment_platform_setup(${target})
-
-    target_link_libraries(${target} PUBLIC ${platform}_sdk experiment_${target})
+    set_target_properties(experiment_${target} PROPERTIES CXX_SCAN_FOR_MODULES ON)
+    target_sources(experiment_${target} PUBLIC FILE_SET CXX_MODULES FILES ${source}.cxx)
+    target_link_libraries(experiment_${target} PUBLIC cpp_std_module)
 endfunction(add_module_experiment)
 
 add_experiment(baseline/baseline baseline)
@@ -60,11 +45,10 @@ add_experiment(formatting/fmt_4_7 fmt_4 fmt-4-header-only)
 add_experiment(formatting/fmt_4_7 fmt_4_opt fmt-4-header-only-opt)
 add_experiment(formatting/fmt_4_7 fmt_5 fmt-5-header-only)
 add_experiment(formatting/fmt_4_7 fmt_5_opt fmt-5-header-only-opt)
-# removed due to being unable to handle toolchain without wchar_t support
-# add_experiment(formatting/fmt_4_7 fmt_6 fmt-6-header-only)
-# add_experiment(formatting/fmt_4_7 fmt_6_opt fmt-6-header-only-opt)
-# add_experiment(formatting/fmt_4_7 fmt_7 fmt-7-header-only)
-# add_experiment(formatting/fmt_4_7 fmt_7_opt fmt-7-header-only-opt)
+# removed due to being unable to handle toolchain without wchar_t support add_experiment(formatting/fmt_4_7 fmt_6
+# fmt-6-header-only) add_experiment(formatting/fmt_4_7 fmt_6_opt fmt-6-header-only-opt)
+# add_experiment(formatting/fmt_4_7 fmt_7 fmt-7-header-only) add_experiment(formatting/fmt_4_7 fmt_7_opt
+# fmt-7-header-only-opt)
 add_experiment(formatting/fmt_8_12 fmt_8 fmt-8-header-only)
 add_experiment(formatting/fmt_8_12 fmt_8_opt fmt-8-header-only-opt)
 add_experiment(formatting/fmt_8_12_compile fmt_8_compile fmt-8-header-only)
@@ -91,10 +75,9 @@ add_experiment(formatting/format format)
 
 add_experiment(formatting/fmt_5_7_format_to_n fmt_5_format_to_n fmt-5-header-only)
 add_experiment(formatting/fmt_5_7_format_to_n fmt_5_opt_format_to_n fmt-5-header-only-opt)
-# removed due to being unable to handle toolchain without wchar_t support
-# add_experiment(formatting/fmt_5_7_format_to_n fmt_6_format_to_n fmt-6-header-only)
-# add_experiment(formatting/fmt_5_7_format_to_n fmt_6_opt_format_to_n fmt-6-header-only-opt)
-# add_experiment(formatting/fmt_5_7_format_to_n fmt_7_format_to_n fmt-7-header-only)
+# removed due to being unable to handle toolchain without wchar_t support add_experiment(formatting/fmt_5_7_format_to_n
+# fmt_6_format_to_n fmt-6-header-only) add_experiment(formatting/fmt_5_7_format_to_n fmt_6_opt_format_to_n
+# fmt-6-header-only-opt) add_experiment(formatting/fmt_5_7_format_to_n fmt_7_format_to_n fmt-7-header-only)
 # add_experiment(formatting/fmt_5_7_format_to_n fmt_7_opt_format_to_n fmt-7-header-only-opt)
 add_experiment(formatting/fmt_8_12_format_to_n fmt_8_format_to_n fmt-8-header-only)
 add_experiment(formatting/fmt_8_12_format_to_n fmt_8_opt_format_to_n fmt-8-header-only-opt)
@@ -127,7 +110,8 @@ add_experiment(hello_world/stdio_fwrite stdio_fwrite)
 add_experiment(hello_world/stdio_putc stdio_putc)
 add_experiment(hello_world/stdio_putchar stdio_putchar)
 add_experiment(hello_world/stdio_puts stdio_puts)
-# add_module_experiment(hello_world/iostream_module iostream_module)
+add_module_experiment(hello_world/iostream_module iostream_module)
+add_module_experiment(hello_world/print_module print_module)
 
 add_experiment(template/alias alias)
 add_experiment(template/alias_channels alias_channels)

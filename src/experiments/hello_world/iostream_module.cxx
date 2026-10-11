@@ -1,16 +1,13 @@
-// Copyright (c) 2025 Paulo Martinez
+// Copyright (c) 2026 Paulo Martinez
 // Licensed under the MIT License, see LICENSE file.
 
-module;
+export module experiment_module;
 
-#include <iostream>
-// import std;
+import std;
 
-export module iostream_module;
-
-export {
-    void __attribute__((noinline)) experiment() {
-        const std::string str = "Hello World!";
-        std::cout << str << std::endl;
-    }
+export namespace experiment_module {
+void __attribute__((noinline)) experiment() {
+    const std::string str = "Hello World!";
+    std::cout << str << std::endl;
 }
+}  // namespace experiment_module

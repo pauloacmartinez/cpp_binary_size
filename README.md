@@ -8,16 +8,19 @@ Moreover, this project additionaly provides a build system
 for comparing, flashing and emulating the generated firmwares.
 
 ## Dependencies
-- CMake >= 3.22
-- Ninja
+
+- CMake >= 3.28
+- Ninja >= 1.11
 - renode
 - puncover
 - openocd
 
 ## Supported boards
+
 - STM32F4DISCOVERY Discovery kit
 
 ## Partially supported boards
+
 - Arduino UNO R4 Minima
 - SiFive HiFive1 Rev B
 
@@ -26,24 +29,24 @@ for comparing, flashing and emulating the generated firmwares.
 Setup build enviroment
 
 ```bash
-$ cmake --preset stm32f4-MinSizeRel-Custom
-$ cd build/stm32f4-MinSizeRel-Custom
+cmake --preset stm32f4
+cd build/stm32f4
 ```
 
 build and emulate firmware
 
 ```bash
-$ ninja emulate_iostream
+ninja emulate_iostream
 ```
 
 build and flash firmware to target board
 
 ```bash
-$ ninja flash_iostream
+ninja flash_iostream
 ```
 
 build, flash and read experiment duration in microseconds
 
 ```bash
-$ ninja read_timer_iostream
+ninja read_timer_iostream
 ```

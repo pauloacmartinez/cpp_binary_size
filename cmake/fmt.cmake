@@ -1,31 +1,28 @@
 function(add_fmt_lib version tag)
     cpmaddpackage(
-        NAME fmt_${version}
-        VERSION ${tag}
-        GITHUB_REPOSITORY fmtlib/fmt
-        GIT_TAG ${tag}
-        DOWNLOAD_ONLY True
-    )
+        NAME
+        fmt_${version}
+        VERSION
+        ${tag}
+        GITHUB_REPOSITORY
+        fmtlib/fmt
+        GIT_TAG
+        ${tag}
+        DOWNLOAD_ONLY
+        True)
 
     if(fmt_${version}_ADDED)
         add_library(fmt-${version}-header-only INTERFACE)
 
         target_include_directories(
-            fmt-${version}-header-only
-            INTERFACE
-            $<BUILD_INTERFACE:${fmt_${version}_SOURCE_DIR}>
-            $<BUILD_INTERFACE:${fmt_${version}_SOURCE_DIR}/include>
-        )
+            fmt-${version}-header-only INTERFACE $<BUILD_INTERFACE:${fmt_${version}_SOURCE_DIR}>
+                                                 $<BUILD_INTERFACE:${fmt_${version}_SOURCE_DIR}/include>)
 
-        target_compile_definitions(
-            fmt-${version}-header-only INTERFACE FMT_HEADER_ONLY=1
-        )
+        target_compile_definitions(fmt-${version}-header-only INTERFACE FMT_HEADER_ONLY=1)
 
-        target_link_options(
-            fmt-${version}-header-only
-            INTERFACE
-            -u _printf_float
-        )
+        target_link_options(fmt-${version}-header-only INTERFACE -u _printf_float)
+
+        target_compile_options(fmt-${version}-header-only INTERFACE -Wno-deprecated-literal-operator)
 
         # lib version with optimized flags
         add_library(fmt-${version}-header-only-opt INTERFACE)
@@ -34,15 +31,13 @@ function(add_fmt_lib version tag)
 
         target_compile_definitions(
             fmt-${version}-header-only-opt
-            INTERFACE
-            FMT_REDUCE_INT_INSTANTIATIONS=1
-            FMT_STATIC_THOUSANDS_SEPARATOR='.'
-            FMT_USE_FLOAT128=0
-            FMT_USE_LONG_DOUBLE=0
-            FMT_USE_LOCALE=0
-            FMT_BUILTIN_TYPES=0
-            FMT_OPTIMIZE_SIZE=1
-        )
+            INTERFACE FMT_REDUCE_INT_INSTANTIATIONS=1
+                      FMT_STATIC_THOUSANDS_SEPARATOR='.'
+                      FMT_USE_FLOAT128=0
+                      FMT_USE_LONG_DOUBLE=0
+                      FMT_USE_LOCALE=0
+                      FMT_BUILTIN_TYPES=0
+                      FMT_OPTIMIZE_SIZE=1)
     endif()
 endfunction()
 
